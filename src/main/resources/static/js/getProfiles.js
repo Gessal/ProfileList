@@ -1,10 +1,9 @@
 function getProfiles(pSystem, container, pN) {
     fetch(`http://localhost:8080/profiles/${pSystem}?page=${pN}`)
         .then(result => result.json())
-        .then(arrayProfiles => {
-            let pagegggg = pN;
+        .then(resporse => {
             container.empty();
-            arrayProfiles.forEach(function (profile) {
+            resporse.models.forEach(function (profile) {
                 let systems = '';
                 profile.profileSystems.forEach(function(profileSystem) {
                     systems += '<a href="/systems/' + profileSystem.altName + '">'+ profileSystem.name + '</a> ';

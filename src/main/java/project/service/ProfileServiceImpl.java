@@ -20,13 +20,18 @@ public class ProfileServiceImpl implements ProfileService {
 
     @Transactional
     @Override
-    public List<Profile> getAllProfiles() {
-        return dao.getAllProfiles();
+    public List<Profile> getAllProfiles(int pageSize, int pageNumber) {
+        return dao.getAllProfiles(pageSize, pageNumber);
     }
 
     @Transactional
     @Override
-    public List<Profile> getAllProfilesBySystem(String sysName) {
-        return dao.getAllProfilesBySystemAltName(sysName);
+    public List<Profile> getAllProfilesBySystem(String sysName, int pageSize, int pageNumber) {
+        return dao.getAllProfilesBySystemAltName(sysName, pageSize, pageNumber);
+    }
+
+    @Override
+    public Long getProfilesCount() {
+        return dao.getProfilesCount();
     }
 }

@@ -14,15 +14,25 @@ public class ProfileDaoImpl implements ProfileDao {
     private EntityManager entityManager;
 
     @Override
-    public List<Profile> getAllProfiles() {
-        return entityManager.createQuery("SELECT p FROM Profile p", Profile.class).getResultList();
+    public List<Profile> getAllProfiles(int pageSize, int pageNumber) {
+        return entityManager.createQuery("SELECT p FROM Profile p", Profile.class)
+                .setFirstResult(pageSize * (pageNumber - 1))
+                .setMaxResults(pageSize)
+                .getResultList();
     }
 
     @Override
-    public List<Profile> getAllProfilesBySystemAltName(String sysName) {
+    public List<Profile> getAllProfilesBySystemAltName(String sysName, int pageSize, int pageNumber) {
         return entityManager
                 .createQuery("SELECT p FROM Profile p JOIN p.profileSystems s WHERE s.altName = :sysName", Profile.class)
                 .setParameter("sysName", sysName)
+                .setFirstResult(pageSize * (pageNumber - 1))
+                .setMaxResults(pageSize)
                 .getResultList();
+    }
+
+    @Override
+    public Long getProfilesCount() {
+        return entityManager.createQuery("SELECT COUNT(p.id) FROM Profile p", Long.class).getSingleResult();
     }
 }

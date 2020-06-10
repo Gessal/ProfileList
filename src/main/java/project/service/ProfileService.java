@@ -5,6 +5,7 @@ import project.model.Profile;
 import java.util.List;
 
 public interface ProfileService {
-    List<Profile> getAllProfiles();
-    List<Profile> getAllProfilesBySystem(String sysName);
+    List<Profile> getAllProfiles(int pageSize, int pageNumber);
+    List<Profile> getAllProfilesBySystem(String sysName, int pageSize, int pageNumber);
+    Long getProfilesCount();
 }

@@ -1,7 +1,8 @@
-function getProfiles(pSystem, container) {
-    fetch(`http://localhost:8080/profiles/${pSystem}`)
+function getProfiles(pSystem, container, pN) {
+    fetch(`http://localhost:8080/profiles/${pSystem}?page=${pN}`)
         .then(result => result.json())
         .then(arrayProfiles => {
+            let pagegggg = pN;
             container.empty();
             arrayProfiles.forEach(function (profile) {
                 let systems = '';

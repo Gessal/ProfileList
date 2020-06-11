@@ -31,6 +31,11 @@ public class ProfileServiceImpl implements ProfileService {
     }
 
     @Override
+    public Long getProfilesCountBySystemAltName(String sysName) {
+        return dao.getProfilesCountBySystemAltName(sysName);
+    }
+
+    @Override
     public Long getProfilesCount() {
         return dao.getProfilesCount();
     }

@@ -32,6 +32,13 @@ public class ProfileDaoImpl implements ProfileDao {
     }
 
     @Override
+    public Long getProfilesCountBySystemAltName(String sysName) {
+        return entityManager.createQuery("SELECT COUNT(p.id) FROM Profile p JOIN p.profileSystems s WHERE s.altName = :sysName", Long.class)
+                .setParameter("sysName", sysName)
+                .getSingleResult();
+    }
+
+    @Override
     public Long getProfilesCount() {
         return entityManager.createQuery("SELECT COUNT(p.id) FROM Profile p", Long.class).getSingleResult();
     }

@@ -3,11 +3,9 @@ function getSystems(container) {
         .then(result => result.json())
         .then(arraySystems => {
             container.empty();
-            container.append('<a class="dropdown-item" href="/profiles/all">Все</a>');
+            container.append('<option value="all" selected>Все</option>');
             arraySystems.forEach(function (profileSystem) {
-                let output = '<a class="dropdown-item" href="/profiles/' + profileSystem.altName + '">' +
-                                 profileSystem.name +
-                             '</a>';
+                let output = '<option value="' + profileSystem.altName + '">' + profileSystem.name + '</option>';
                 container.append(output);
             })
         })

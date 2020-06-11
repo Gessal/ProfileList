@@ -3,18 +3,18 @@ function getProfiles(pSystem, container, pN) {
         .then(result => result.json())
         .then(resporse => {
             container.empty();
-            resporse.models.forEach(function (profile) {
+            resporse.forEach(function (profile) {
                 let systems = '';
                 profile.profileSystems.forEach(function(profileSystem) {
-                    systems += '<a href="/systems/' + profileSystem.altName + '">'+ profileSystem.name + '</a> ';
+                    systems += '<a href="/systems/' + profileSystem.altName + '">'+ profileSystem.name + '</a> /';
                 })
                 let uses = '';
                 profile.uses.forEach(function(use) {
-                    uses += '<a href="/uses/' + use.altName + '">'+ use.name + '</a> ';
+                    uses += '<a href="/uses/' + use.altName + '">'+ use.name + '</a> /';
                 })
                 let output =
                     '<div class="card m-2" style="width: 15rem;">' +
-                        '<img src="images/' + profile.image + '" style="width: 13rem; height: 13rem; align-self: center;" class="card-img-top" alt="*">' +
+                        '<img src="/images/' + profile.image + '" style="width: 13rem; height: 13rem; align-self: center;" class="card-img-top" alt="*">' +
                         '<div class="card-body text-center">\n' +
                         '<h5 class="card-title">' + profile.name + '</h5>' +
                         systems +

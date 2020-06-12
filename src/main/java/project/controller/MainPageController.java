@@ -2,11 +2,18 @@ package project.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("/main")
 public class MainPageController {
-    @GetMapping("/main/profiles")
-    public String hello() {
-        return "main_page";
+    @GetMapping("/profiles")
+    public String profilesPage() {
+        return "profiles_page";
+    }
+
+    @GetMapping("/calculator/window")
+    public String calculatorWindowPage() {
+        return "calculator-window_page";
     }
 }

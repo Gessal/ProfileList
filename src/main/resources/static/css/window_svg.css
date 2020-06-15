@@ -1,0 +1,76 @@
+.window_profile:hover {
+    fill: #ccc1ff;
+}
+
+.glass:hover {
+    fill: #ccc1ff;
+}
+
+.test {
+    fill: #ccc1ff;
+}
+
+.window_profile {
+    fill:#e6e6e6;
+    fill-opacity:1;
+    stroke:#000000;
+    stroke-width: 1px;
+    stroke-linecap:butt;
+    stroke-linejoin:miter;
+    stroke-opacity:1;
+}
+
+.glass {
+    fill:#a0ffff;
+    fill-opacity:0.5;
+    stroke:#000000;
+    stroke-width:0.264583;
+}
+
+.glass_label {
+    fill:none;
+    stroke:#0000ff;
+    stroke-width:1px;
+    stroke-linecap:butt;
+    stroke-linejoin:miter;
+    stroke-miterlimit:4;
+    stroke-dasharray:none;
+    stroke-opacity:1;
+}
+
+.handle_part {
+    fill:#e6e6e6;
+    fill-opacity:1;
+    stroke:#000000;
+    stroke-width:1px;
+    stroke-miterlimit:4;
+    stroke-dasharray:none;
+    stroke-opacity:1;
+}
+.open_symbol {
+    fill:none;
+    stroke:#00ff00;
+    stroke-width:1px;
+    stroke-linecap:butt;
+    stroke-linejoin:miter;
+    stroke-opacity:1;
+}
+
+.hinge {
+    fill:#d2d2d2;
+    fill-opacity:1;
+    stroke:#000000;
+    stroke-width:1px;
+    stroke-linecap:butt;
+    stroke-linejoin:miter;
+    stroke-opacity:1;
+}
+
+.dimension {
+    fill: none;
+    stroke:#0000ff;
+    stroke-width:1px;
+    stroke-linecap:butt;
+    stroke-linejoin:miter;
+    stroke-opacity:1;
+}

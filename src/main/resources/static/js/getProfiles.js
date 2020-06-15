@@ -14,7 +14,7 @@ function getProfiles(pSystem, container, pN) {
                 })
                 let output =
                     '<div class="card m-2" style="width: 15rem;">' +
-                        '<img src="/images/' + profile.image + '" style="width: 13rem; height: 13rem; align-self: center;" class="card-img-top" alt="*">' +
+                        '<img src="/images/profiles/' + profile.image + '" style="width: 13rem; height: 13rem; align-self: center;" class="card-img-top" alt="*">' +
                         '<div class="card-body text-center">\n' +
                         '<h5 class="card-title">' + profile.name + '</h5>' +
                         systems +

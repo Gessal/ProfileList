@@ -16,4 +16,9 @@ public class MainPageController {
     public String calculatorWindowPage() {
         return "calculator-window_page";
     }
+
+    @GetMapping("/connections")
+    public String connectionsPage() {
+        return "connections_page";
+    }
 }

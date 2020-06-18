@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="/webjars/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/main.css" type="text/css" rel="stylesheet">
+    <link href="/css/window_svg.css" type="text/css" rel="stylesheet">
     <title>ProfileList</title>
 </head>
 <body>
@@ -12,10 +13,6 @@
 <nav id="header" class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
     <a class="navbar-brand col-sm-3 col-md-2 m-0 p-0 mr-auto" href="/main/profiles">
         <img src="/images/logo.svg" width="32" height="32" class="d-inline-block align-top m-1" alt="..."> <h2 class="d-inline-block m-0">Profiles list</h2></a>
-    <h4 id="system_label">Система: </h4>
-    <select class="custom-select ml-2" id="psystems">
-        <!-- Заполняет getSystems.js -->
-    </select>
     <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
             <a class="nav-link" href="/logout">Выход</a>
@@ -31,7 +28,7 @@
 
         <!------------------------------------ Область отображения данных ------------------------------------>
         <main id="data" role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-            <div class="row container-fluid p-0 mt-5" id="profiles_list">
+            <div id="connections_list" class="row container-fluid p-0 mt-5">
 
             </div>
             <nav>
@@ -44,10 +41,10 @@
 </div>
 
     <script src="/webjars/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="/webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-    <script src="/js/profiles_pages_count.js"></script>
-    <script src="/js/getSystems.js"></script>
-    <script src="/js/getProfiles.js"></script>
-    <script src="/js/events/prifiles_page.js"></script>
+    <script src="/js/events/connections_page.js"></script>
+    <script src="/js/getConnections.js"></script>
+    <script src="/js/connections_pages_count.js"></script>
 </body>
 </html>

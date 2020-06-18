@@ -1,5 +1,5 @@
-function drawPaging(pSystem, pageSyze, container) {
-    fetch(`http://localhost:8080/util/profiles-count/${pSystem}`)
+function connections_pages_count(pSystem, pageSyze, container) {
+    fetch(`http://localhost:8080/util/connections-count/${pSystem}`)
         .then(result => result.text())
         .then(resporse => {
             container.empty();

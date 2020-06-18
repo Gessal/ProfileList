@@ -41,6 +41,9 @@ public class Profile {
     @Column
     private String image;
 
+    @OneToOne
+    private ProfileType type;
+
     @ManyToMany
     @JoinTable(name = "profiles_systems", joinColumns = @JoinColumn(name = "profile_id"), inverseJoinColumns = @JoinColumn(name = "system_id"))
     private Set<ProfileSystem> profileSystems;
@@ -49,9 +52,10 @@ public class Profile {
     @JoinTable(name = "profiles_uses", joinColumns = @JoinColumn(name = "profile_id"), inverseJoinColumns = @JoinColumn(name = "use_id"))
     private Set<ProfileUse> uses;
 
-    public Profile(String name, float weight, Set<ProfileSystem> profileSystems, Set<ProfileUse> uses) {
+    public Profile(String name, float weight, ProfileType type, Set<ProfileSystem> profileSystems, Set<ProfileUse> uses) {
         this.name = name;
         this.weight = weight;
+        this.type = type;
         this.profileSystems = profileSystems;
         this.uses = uses;
     }

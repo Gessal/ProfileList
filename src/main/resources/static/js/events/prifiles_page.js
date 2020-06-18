@@ -6,7 +6,7 @@ $(document).ready(function(){
     $('#profiles_link').addClass('active');
     getProfiles(profileSystem, profiles_list, currPage);
     getSystems($('#psystems'));
-    drawPaging(profileSystem, pageSize, $('#paging'))
+    profiles_pages_count(profileSystem, pageSize, $('#paging'))
     $(document).on('click', '.page-btn', function() {
         let newPage = this.id.replace("p_", '');
         $('#pi_' + currPage).removeClass('active');

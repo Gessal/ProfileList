@@ -1,5 +1,5 @@
 function getProfiles(pSystem, container, pN) {
-    fetch(`http://localhost:8080/profiles/${pSystem}?page=${pN}`)
+    fetch(`http://localhost:8080/profiles/get/${pSystem}?page=${pN}`)
         .then(result => result.json())
         .then(resporse => {
             container.empty();

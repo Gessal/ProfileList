@@ -20,7 +20,7 @@ public class ProfilesRestController {
         this.service = service;
     }
 
-    @GetMapping("/{profileSystem}")
+    @GetMapping("/get/{profileSystem}")
     public ResponseEntity<List<Profile>> getProfiles(@PathVariable(value = "profileSystem") String profileSystem,
                                                      @RequestParam(value = "page") int page,
                                                      @RequestParam(value = "pageSize", required = false) Integer pageSize) {
@@ -31,7 +31,34 @@ public class ProfilesRestController {
 
         if (profileSystem.equals("all")) {
             return new ResponseEntity<>(
-                    service.getAllProfiles(curPageSize, page),
+                    service.getAllProfilesPage(curPageSize, page),
+                    HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(
+                    service.getAllProfilesBySystem(profileSystem, curPageSize, page),
+                    HttpStatus.OK);
+        }
+    }
+
+    @GetMapping("/getAll")
+    public ResponseEntity<List<Profile>> getAllProfiles() {
+        return new ResponseEntity<>(
+                    service.getAllProfiles(),
+                    HttpStatus.OK);
+    }
+
+    @GetMapping("/add")
+    public ResponseEntity<List<Profile>> addProfile(@PathVariable(value = "profileSystem") String profileSystem,
+                                                     @RequestParam(value = "page") int page,
+                                                     @RequestParam(value = "pageSize", required = false) Integer pageSize) {
+        int curPageSize = 12;
+        if (pageSize != null) {
+            curPageSize = pageSize;
+        }
+
+        if (profileSystem.equals("all")) {
+            return new ResponseEntity<>(
+                    service.getAllProfilesPage(curPageSize, page),
                     HttpStatus.OK);
         } else {
             return new ResponseEntity<>(

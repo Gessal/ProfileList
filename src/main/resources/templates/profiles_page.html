@@ -1,53 +1,120 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="/webjars/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/css/main.css" type="text/css" rel="stylesheet">
-    <title>ProfileList</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="/webjars/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <title>Home</title>
 </head>
 <body>
 <!------------------------------------------------------- Шапка ------------------------------------------------------->
-<nav id="header" class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-    <a class="navbar-brand col-sm-3 col-md-2 m-0 p-0 mr-auto" href="/main/profiles">
-        <img src="/images/logo.svg" width="32" height="32" class="d-inline-block align-top m-1" alt="..."> <h2 class="d-inline-block m-0">Profiles list</h2></a>
-    <h4 id="system_label">Система: </h4>
-    <select class="custom-select ml-2" id="psystems">
-        <!-- Заполняет getSystems.js -->
-    </select>
-    <ul class="navbar-nav px-3">
-        <li class="nav-item text-nowrap">
-            <a class="nav-link" href="/logout">Выход</a>
-        </li>
-    </ul>
-</nav>
+<nav th:replace="fragments/header :: home_header"></nav>
 <!--------------------------------------------------------------------------------------------------------------------->
-<div id="main_body" class="container-fluid">
-    <div class="row">
-        <!------------------------------------------ Боковая панель ------------------------------------------>
-        <nav th:replace="/fragments/side-bar :: main-left_side_bar"></nav>
-        <!---------------------------------------------------------------------------------------------------->
+<!------------------------------------------------------- Профили ------------------------------------------------------>
+<div class="d-flex justify-content-center py-5">
+  <div th:fragment="add-topic_button" class="my-3">
+    <button id="modal_add-topic_but" type="button" class="btn btn-dark position-fixed" data-toggle="modal" data-target="#modalWindowCreateTopic">
+      Новая статья
+    </button>
+  </div>
+  <div id="profiles_container" class="row container p-0">
+    <!-- Заполняется скриптом getProfiles -->
+  </div>
+  <!---------------------------------------- Форма справа -------------------------------------------------->
+  <div class="my-3">
+    <div class="position-fixed">
+      <h4 class="d-flex justify-content-between align-items-center">
+        <span class="text-muted">Фильтры</span>
+      </h4>
+      <form id="filter_form">
+        <ul class="list-group mb-3">
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+          <label for="profile_system_select" class="m-0">Система</label>
+          <select id="profile_system_select" name="pofile_system" class="form-control ml-3">
+            <option selected>Все</option>
+            <option value="KP40">КП40</option>
+            <option value="KP45">КП45</option>
+            <option value="KP50">КП50</option>
+          </select>
+        </li>
+          <li class="list-group-item d-flex justify-content-between lh-condensed">
+          <div class="accordion" id="profile_uses_panel">
+            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              Назначение
+            </button>
+            <div id="collapseOne" class="collapse" data-parent="#profile_uses_panel">
+              <div id="profile_uses_data" class="card-body">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="sash-window" value="option1">
+                  <label class="form-check-label" for="sash-window">Створка окна</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="rack" value="option2">
+                  <label class="form-check-label" for="rack">Стойка</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="crossbar" value="option1">
+                  <label class="form-check-label" for="crossbar">Ригель</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="frame" value="option2">
+                  <label class="form-check-label" for="frame">Рама</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="rack-90" value="option1">
+                  <label class="form-check-label" for="rack-90">Стойка угловая 90</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="mort-corner" value="option2">
+                  <label class="form-check-label" for="mort-corner">Закладная угловая</label>
+                </div>
 
-        <!------------------------------------ Область отображения данных ------------------------------------>
-        <main id="data" role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-            <div class="row container-fluid p-0 mt-5" id="profiles_list">
-
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="mort-impost" value="option1">
+                  <label class="form-check-label" for="mort-impost">Закладная иппостная</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="tract-window" value="option2">
+                  <label class="form-check-label" for="tract-window">Тяга фурнитурная в створку окна</label>
+                </div>
+              </div>
             </div>
-            <nav>
-                <ul id="paging" class="pagination">
-                </ul>
-            </nav>
-        </main>
-        <!---------------------------------------------------------------------------------------------------->
+          </div>
+        </li>
+          <li class="list-group-item d-flex justify-content-between">
+          <button type="button" class="btn btn-dark">Применить</button>
+          <button type="button" class="btn btn-dark">Сбросить</button>
+        </li>
+        </ul>
+      </form>
+      <form id="find_form" class="card p-2">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="">
+          <div class="input-group-append">
+            <button type="button" class="btn btn-dark">Поиск</button>
+          </div>
+        </div>
+      </form>
     </div>
+  </div>
 </div>
+<!--------------------------------------------------------------------------------------------------------------------->
 
-    <script src="/webjars/jquery/3.3.1/jquery.min.js"></script>
-    <script src="/webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-    <script src="/js/profiles_pages_count.js"></script>
-    <script src="/js/getSystems.js"></script>
-    <script src="/js/getProfiles.js"></script>
-    <script src="/js/events/prifiles_page.js"></script>
+<!------------------------------------------ Навигация по страницам --------------------------------------------------->
+<div class="container">
+  <nav>
+    <ul id="paging" class="pagination">
+    </ul>
+  </nav>
+</div>
+<!--------------------------------------------------------------------------------------------------------------------->
+
+<script src="/webjars/jquery/3.3.1/jquery.min.js"></script>
+<script src="/webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script src="/js/profiles_pages_count.js"></script>
+<script src="/js/getSystems.js"></script>
+<script src="/js/getProfiles.js"></script>
+<script src="/js/events/prifiles_page.js"></script>
 </body>
 </html>
